@@ -1,0 +1,80 @@
+plugin.tx_w4cacheautoclear {
+    settings {
+        records {
+            0 {
+                table = sys_file
+                where {
+                    // CType="uploads" AND file_collections!=""
+                    1 {
+                        field = CType
+                        is = eq
+                        to = uploads
+                    }
+                }
+            }
+            1 {
+                table = sys_file_metadata
+                where {
+                    // CType="uploads" AND file_collections!=""
+                    1 {
+                        field = CType
+                        is = eq
+                        to = uploads
+                    }
+                }
+            }
+            2 {
+                table = sys_file_collection
+                where {
+                    // CType="uploads" AND file_collections IN (###PID###)
+                    1 {
+                        field = CType
+                        is = eq
+                        to = uploads
+                    }
+                    2 {
+                        field = file_collections
+                        is = in
+                        to = ###PID###
+                    }
+                }
+            }
+            3 {
+                table = sys_file_reference
+                wherePageUid = ###PID###
+            }
+            4 {
+                table = tx_news_domain_model_news
+                where {
+                    // CType="list" AND list_type="news_pi1"
+                    1 {
+                        field = CType
+                        is = eq
+                        to = list
+                    }
+                    2 {
+                        field = list_type
+                        is = eq
+                        to = news_pi1
+                    }
+                }
+            }
+            5 {
+                table = tt_address
+                where {
+                    // CType="list" AND list_type="tt_address_pi1"
+                    1 {
+                        field = CType
+                        is = eq
+                        to = list
+                    }
+                    2 {
+                        field = list_type
+                        is = eq
+                        to = tt_address_pi1
+                    }
+                }
+            }
+        }
+    }
+}
