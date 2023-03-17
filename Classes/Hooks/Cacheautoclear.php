@@ -8,7 +8,6 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class Cacheautoclear
 {
@@ -21,13 +20,9 @@ class Cacheautoclear
     public function processDatamap_afterDatabaseOperations($status, $table, $id, &$fieldArray, &$parentObject)
     {
 
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $configurationManager = $objectManager->get(ConfigurationManager::class);
-        $settings = $configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT
-        );
-
-        $records = $settings['plugin.']['tx_w4cacheautoclear.']['settings.']['records.'];
+        $configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\BackendConfigurationManager');
+        $extbaseFrameworkConfiguration = $configurationManager->getTypoScriptSetup();
+        $records = $extbaseFrameworkConfiguration['plugin.']['tx_w4cacheautoclear.']['settings.']['records.']; 
 
         if ( (is_array($records)) && (count($records)) ) {
             foreach ($records as $record) {
