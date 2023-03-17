@@ -1,7 +1,7 @@
 {
     "name": "w4services/w4_cacheautoclear",
     "type": "typo3-cms-extension",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "W4 clear related pages cache after saving records.",
     "homepage": "https://www.w-4.com",
     "repositories": [
@@ -22,7 +22,7 @@
         "sort-packages": true
     },
     "require": {
-        "typo3/cms-core": "^11.5"
+        "typo3/cms-core": "^11.5 || ^12"
     },
     "autoload": {
         "psr-4": {
