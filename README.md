@@ -1,4 +1,4 @@
-[![TYPO3 11](https://img.shields.io/badge/TYPO3-11-orange.svg)](https://get.typo3.org/version/11)
+[![TYPO3 11](https://img.shields.io/badge/TYPO3-11-orange.svg)](https://get.typo3.org/version/11) [![TYPO3 12](https://img.shields.io/badge/TYPO3-12-orange.svg)](https://get.typo3.org/version/12)
 
 # TYPO3 Extension `w4_cacheautoclear` 
 
@@ -13,10 +13,10 @@ Once installed, when creating or modifying any file in the `Filelist` or a `news
 
 ## Compatibility
 
-| w4_cacheautoclear | TYPO3 | PHP       | Support / Development                |
-|-------------------|-------|-----------|--------------------------------------|
-| dev-main          | 11.5  | 7.4 - 8.1 | unstable development branch          |
-| 1.x.x             | 11.5  | 7.4 - 8.1 | features, bugfixes, security updates |
+| w4_cookiebar | TYPO3     | PHP       | Support / Development                |
+|--------------|-----------|-----------|--------------------------------------|
+| master-dev   | 11.5 - 12 | 7.4 - 8.1 | unstable development branch          |
+| 1.x.x        | 11.5 - 12 | 7.4 - 8.1 | features, bugfixes, security updates |
 
 ## Installation
 
