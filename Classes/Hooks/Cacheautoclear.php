@@ -27,6 +27,12 @@ class Cacheautoclear
         if ( (is_array($records)) && (count($records)) ) {
             foreach ($records as $record) {
                 if ($record['table']==$table) {
+                    $subTypeColumn = $GLOBALS['TCA'][$table]['ctrl']['type'];
+                    if(isset($record['table_subtype'])) {
+                        if($parentObject->checkValue_currentRecord[$subTypeColumn] != $record['table_subtype']) {
+                            continue;
+                        }
+                    }
                     $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
 
                     if ($record['wherePageUid']=='###PID###') {
