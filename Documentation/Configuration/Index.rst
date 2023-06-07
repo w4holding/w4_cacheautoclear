@@ -15,11 +15,12 @@ Adding this to the setup:
 
 .. code-block:: typoscript
 
-   plugin.tx_w4communitynet {
+   plugin.tx_w4cacheautoclear {
       settings {
          records {
                6 {
                   table = tx_faq_domain_model_question
+                  table_subtype = 200
                   where {
                      // CType="list" AND list_type="faq_faq"
                      1 {
