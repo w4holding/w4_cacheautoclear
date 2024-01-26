@@ -3,7 +3,7 @@
 $EM_CONF[$_EXTKEY] = [
     'title' => 'W4 Cache Autoclear',
     'description' => 'W4 clear related pages cache after saving records.',
-    'version' => '1.0.2',
+    'version' => '1.0.3',
     'category' => 'fe',
     'constraints' => [
         'depends' => [

@@ -8,6 +8,7 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Configuration\BackendConfigurationManager;
 
 class Cacheautoclear
 {
@@ -19,9 +20,9 @@ class Cacheautoclear
      */
     public function processDatamap_afterDatabaseOperations($status, $table, $id, &$fieldArray, &$parentObject)
     {
-
-        $configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\BackendConfigurationManager');
+        $configurationManager = GeneralUtility::makeInstance(BackendConfigurationManager::class);
         $extbaseFrameworkConfiguration = $configurationManager->getTypoScriptSetup();
+
         $records = $extbaseFrameworkConfiguration['plugin.']['tx_w4cacheautoclear.']['settings.']['records.']; 
 
         if ( (is_array($records)) && (count($records)) ) {
@@ -61,13 +62,13 @@ class Cacheautoclear
                                 case 'inSet':
                                 case 'notInSet':
                                 {
-                                    $queryBuilder->where($queryBuilder->expr()->{$where['is']}($where['field'], $queryBuilder->createNamedParameter($to)));
+                                    $queryBuilder->andWhere($queryBuilder->expr()->{$where['is']}($where['field'], $queryBuilder->createNamedParameter($to)));
                                     break;
                                 }
                                 case 'isNull':
                                 case 'isNotNull':
                                 {
-                                    $queryBuilder->where($queryBuilder->expr()->{$where['is']}($where['field']));
+                                    $queryBuilder->andWhere($queryBuilder->expr()->{$where['is']}($where['field']));
                                     break;
                                 }
                                 default:
